@@ -185,6 +185,7 @@ select {
     display: flex;
     flex-direction: column;
     position: relative;
+    height: 350px; /* Fixed height for uniformity */
     transition: transform var(--transition), box-shadow var(--transition);
 }
 
@@ -193,11 +194,46 @@ select {
     box-shadow: 0 8px 24px rgba(0, 51, 102, 0.12);
 }
 
+.idea-card .content-wrapper {
+    flex: 1;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .idea-card .content {
     font-size: 1.05rem;
-    margin-bottom: 2rem;
     color: var(--text-color);
     white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.idea-card.expanded {
+    height: auto;
+    min-height: 350px;
+}
+
+.idea-card.expanded .content {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 0.5rem;
+    text-align: left;
+    display: none; /* Shown by JS if content overflows */
 }
 
 .idea-card .footer {

@@ -60,6 +60,14 @@ function renderIdeas() {
         sortedIdeas.forEach(idea => {
             const ideaCard = createIdeaCard(idea);
             ideaBoard.appendChild(ideaCard);
+            
+            // Check for overflow after adding to the DOM to show/hide "Read more"
+            const content = ideaCard.querySelector('.content');
+            const readMoreBtn = ideaCard.querySelector('.read-more-btn');
+            
+            if (content.scrollHeight > content.clientHeight) {
+                readMoreBtn.style.display = 'block';
+            }
         });
     }
 }
@@ -68,13 +76,17 @@ function renderIdeas() {
 function createIdeaCard(idea) {
     const card = document.createElement('div');
     card.className = 'idea-card';
+    card.id = `idea-${idea.id}`;
     
     // Get first letter for avatar
     const initial = idea.author.charAt(0);
     
     card.innerHTML = `
         <button class="delete-btn" title="Delete Idea" onclick="deleteIdea(${idea.id})">&times;</button>
-        <div class="content">${escapeHtml(idea.text)}</div>
+        <div class="content-wrapper">
+            <div class="content">${escapeHtml(idea.text)}</div>
+            <button class="read-more-btn" onclick="toggleReadMore(${idea.id})">Read more</button>
+        </div>
         <div class="footer">
             <div class="author-tag">
                 <div class="avatar">${initial}</div>
@@ -85,6 +97,15 @@ function createIdeaCard(idea) {
     `;
     
     return card;
+}
+
+// Function to toggle "Read more"
+function toggleReadMore(id) {
+    const card = document.getElementById(`idea-${id}`);
+    const btn = card.querySelector('.read-more-btn');
+    const isExpanded = card.classList.toggle('expanded');
+    
+    btn.textContent = isExpanded ? 'Show less' : 'Read more';
 }
 
 // Function to add a new idea
