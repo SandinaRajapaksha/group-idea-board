@@ -1,0 +1,219 @@
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --primary-color: #4a90e2;
+    --error-color: #e74c3c;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    /* User Colors */
+    --color-alice: #ff9f43;
+    --color-bob: #54a0ff;
+    --color-carlos: #1dd1a1;
+    --color-diana: #5f27cd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2d3436;
+}
+
+header p {
+    color: #636e72;
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.input-card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 600px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+}
+
+select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #dfe6e9;
+    background: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.primary-btn:hover {
+    background-color: #357abd;
+    transform: translateY(-1px);
+}
+
+/* Idea Grid */
+.idea-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.idea-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.idea-card .content {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.idea-card .footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.author-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* User Specific Avatar Colors */
+.avatar.Alice { background-color: var(--color-alice); }
+.avatar.Bob { background-color: var(--color-bob); }
+.avatar.Carlos { background-color: var(--color-carlos); }
+.avatar.Diana { background-color: var(--color-diana); }
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #b2bec3;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #dfe6e9;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.delete-btn:hover {
+    color: var(--error-color);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px dashed #b2bec3;
+    border-radius: var(--border-radius);
+    color: #636e72;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}

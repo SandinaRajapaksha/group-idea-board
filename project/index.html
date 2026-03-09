@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Idea Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Group Idea Board</h1>
+        <p>Collaborative space for our team ideas!</p>
+      </header>
+
+      <section class="input-section">
+        <div class="input-card">
+          <textarea
+            id="ideaInput"
+            placeholder="Type your brilliant idea here..."
+            rows="3"
+          ></textarea>
+          <div class="controls">
+            <select id="authorSelect">
+              <option value="" disabled selected>Select your name</option>
+              <option value="Alice">Alice</option>
+              <option value="Bob">Bob</option>
+              <option value="Carlos">Carlos</option>
+              <option value="Diana">Diana</option>
+            </select>
+            <button id="postBtn" class="primary-btn">Post Idea</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="board-section">
+        <div id="ideaBoard" class="idea-grid">
+          <!-- Ideas will be rendered here -->
+        </div>
+        <div id="emptyState" class="empty-state">
+          <p>No ideas yet. Be the first to post something amazing!</p>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
