@@ -35,6 +35,15 @@ A hands-on group project from the **University of Colombo School of Computing (U
 > Constraints:
 > Pure HTML, CSS, and vanilla JS — no frameworks or external libraries`
 
+
+#### Prompt 02
+
+> The names of the team members are Sandina, Ravindu, Nesith, Dinithi, Nethmi, Thulana, Niduka, Chaneru and Ivishan.
+> Use a white and dark blue as the theme. Enable dark mode support. 
+> Modern styling, minimal and suitable for academic settings.
+
+
+
 ---
 
 ## GitHub Link
