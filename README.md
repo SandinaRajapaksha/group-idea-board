@@ -31,15 +31,14 @@ A hands-on group project from the **University of Colombo School of Computing (U
 > Input clears automatically after submission
 > Empty state message when no ideas have been posted yet
 > Fully responsive layout (mobile + desktop)
-> 
+>
 > Constraints:
 > Pure HTML, CSS, and vanilla JS — no frameworks or external libraries`
-
 
 #### Prompt 02
 
 > The names of the team members are Sandina, Ravindu, Nesith, Dinithi, Nethmi, Thulana, Niduka, Chaneru and Ivishan.
-> Use a white and dark blue as the theme. Enable dark mode support. 
+> Use a white and dark blue as the theme. Enable dark mode support.
 > Modern styling, minimal and suitable for academic settings.
 
 #### Prompt 03
@@ -48,7 +47,7 @@ A hands-on group project from the **University of Colombo School of Computing (U
 
 #### Prompt 04
 
-> Text input area should be resizeable. Add text wrap for the cards. 
+> Text input area should be resizeable. Add text wrap for the cards.
 
 ---
 
@@ -59,8 +58,10 @@ https://github.com/SandinaRajapaksha/group-idea-board
 ---
 
 ### Screenshots
-![dark.png]
-![light.png]
+
+![dark.png](https://github.com/SandinaRajapaksha/group-idea-board/blob/main/dark.png?raw=true)
+![light.png](https://github.com/SandinaRajapaksha/group-idea-board/blob/main/light.png?raw=true)
+
 ---
 
 ## License
