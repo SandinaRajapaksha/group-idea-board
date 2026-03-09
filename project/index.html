@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Idea Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-top">
+          <h1>Group Idea Board</h1>
+          <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+            <span class="icon">🌙</span>
+          </button>
+        </div>
+        <p>Collaborative academic space for our research and project ideas.</p>
+      </header>
+
+      <section class="input-section">
+        <div class="input-card">
+          <textarea
+            id="ideaInput"
+            placeholder="Describe your idea or research point..."
+            rows="3"
+          ></textarea>
+          <div class="controls">
+            <select id="authorSelect">
+              <option value="" disabled selected>Select contributor</option>
+              <option value="Sandina">Sandina</option>
+              <option value="Ravindu">Ravindu</option>
+              <option value="Nesitha">Nesitha</option>
+              <option value="Dinithi">Dinithi</option>
+              <option value="Nethmi">Nethmi</option>
+              <option value="Thulana">Thulana</option>
+              <option value="Niduka">Niduka</option>
+              <option value="Chaneru">Chaneru</option>
+              <option value="Ivishan">Ivishan</option>
+            </select>
+            <button id="postBtn" class="primary-btn">Share Idea</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="board-section">
+        <div id="ideaBoard" class="idea-grid">
+          <!-- Ideas will be rendered here -->
+        </div>
+        <div id="emptyState" class="empty-state">
+          <p>No ideas yet. Be the first to post something amazing!</p>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
