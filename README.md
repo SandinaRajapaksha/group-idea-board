@@ -39,6 +39,8 @@ A hands-on group project from the **University of Colombo School of Computing (U
 
 ## GitHub Link
 
+https://github.com/SandinaRajapaksha/group-idea-board
+
 ---
 
 ### Screenshots
