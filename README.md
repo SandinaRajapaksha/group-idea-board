@@ -44,7 +44,11 @@ A hands-on group project from the **University of Colombo School of Computing (U
 
 #### Prompt 03
 
-> Each idea card should turncate after six lines with a readmore options. All cards should be similar in size in a uniform grid. 
+> Each idea card should turncate after six lines with a readmore options. All cards should be similar in size in a uniform grid.
+
+#### Prompt 04
+
+> Text input area should be resizeable. Add text wrap for the cards. 
 
 ---
 
