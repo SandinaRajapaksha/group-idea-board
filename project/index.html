@@ -9,26 +9,36 @@
   <body>
     <div class="container">
       <header>
-        <h1>Group Idea Board</h1>
-        <p>Collaborative space for our team ideas!</p>
+        <div class="header-top">
+          <h1>Group Idea Board</h1>
+          <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+            <span class="icon">🌙</span>
+          </button>
+        </div>
+        <p>Collaborative academic space for our research and project ideas.</p>
       </header>
 
       <section class="input-section">
         <div class="input-card">
           <textarea
             id="ideaInput"
-            placeholder="Type your brilliant idea here..."
+            placeholder="Describe your idea or research point..."
             rows="3"
           ></textarea>
           <div class="controls">
             <select id="authorSelect">
-              <option value="" disabled selected>Select your name</option>
-              <option value="Alice">Alice</option>
-              <option value="Bob">Bob</option>
-              <option value="Carlos">Carlos</option>
-              <option value="Diana">Diana</option>
+              <option value="" disabled selected>Select contributor</option>
+              <option value="Sandina">Sandina</option>
+              <option value="Ravindu">Ravindu</option>
+              <option value="Nesitha">Nesitha</option>
+              <option value="Dinithi">Dinithi</option>
+              <option value="Nethmi">Nethmi</option>
+              <option value="Thulana">Thulana</option>
+              <option value="Niduka">Niduka</option>
+              <option value="Chaneru">Chaneru</option>
+              <option value="Ivishan">Ivishan</option>
             </select>
-            <button id="postBtn" class="primary-btn">Post Idea</button>
+            <button id="postBtn" class="primary-btn">Share Idea</button>
           </div>
         </div>
       </section>

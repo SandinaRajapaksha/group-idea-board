@@ -4,12 +4,35 @@ const authorSelect = document.getElementById('authorSelect');
 const postBtn = document.getElementById('postBtn');
 const ideaBoard = document.getElementById('ideaBoard');
 const emptyState = document.getElementById('emptyState');
+const themeToggle = document.getElementById('themeToggle');
 
 // State management
 let ideas = [];
 
-// Load ideas from localStorage on initialization
+// Theme Logic
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('.icon');
+    icon.textContent = theme === 'light' ? '🌙' : '☀️';
+}
+
+// Data Initialization
 function init() {
+    initTheme();
     const savedIdeas = localStorage.getItem('groupIdeas');
     if (savedIdeas) {
         ideas = JSON.parse(savedIdeas);
@@ -50,12 +73,12 @@ function createIdeaCard(idea) {
     const initial = idea.author.charAt(0);
     
     card.innerHTML = `
-        <button class="delete-btn" title="Delete Idea" onclick="deleteIdea(${idea.id})">×</button>
+        <button class="delete-btn" title="Delete Idea" onclick="deleteIdea(${idea.id})">&times;</button>
         <div class="content">${escapeHtml(idea.text)}</div>
         <div class="footer">
             <div class="author-tag">
-                <div class="avatar ${idea.author}">${initial}</div>
-                <span>${idea.author}</span>
+                <div class="avatar">${initial}</div>
+                <span class="author-name">${idea.author}</span>
             </div>
             <div class="timestamp">${idea.timestamp}</div>
         </div>
@@ -75,7 +98,7 @@ function postIdea() {
     }
     
     if (!author) {
-        alert("Please select your name!");
+        alert("Please select a contributor name!");
         return;
     }
     
@@ -92,7 +115,6 @@ function postIdea() {
     
     // Reset inputs
     ideaInput.value = '';
-    // Optional: keep the author selected for convenience
 }
 
 // Function to delete an idea
@@ -113,6 +135,7 @@ function escapeHtml(text) {
 
 // Event Listeners
 postBtn.addEventListener('click', postIdea);
+themeToggle.addEventListener('click', toggleTheme);
 
 // Allow posting with Ctrl+Enter or Cmd+Enter
 ideaInput.addEventListener('keydown', (e) => {
