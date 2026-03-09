@@ -59,7 +59,8 @@ https://github.com/SandinaRajapaksha/group-idea-board
 ---
 
 ### Screenshots
-
+![dark.png]
+![light.png]
 ---
 
 ## License
