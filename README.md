@@ -42,7 +42,9 @@ A hands-on group project from the **University of Colombo School of Computing (U
 > Use a white and dark blue as the theme. Enable dark mode support. 
 > Modern styling, minimal and suitable for academic settings.
 
+#### Prompt 03
 
+> Each idea card should turncate after six lines with a readmore options. All cards should be similar in size in a uniform grid. 
 
 ---
 
