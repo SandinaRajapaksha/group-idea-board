@@ -49,9 +49,9 @@ A hands-on group project from the **University of Colombo School of Computing (U
 #### Prompt 02
 
 > Design and build a minimal, modern student dashboard with slight brutalist aesthetics using a maroon and gold color palette. The UI should include a light/dark mode toggle with a manual switch, fade-in animations on page load and transitions, a sidebar with hover interactions like expanding labels and highlight states, and a logo placeholder in the header.
-> The GPA calculator should have input fields for course name, credit hours, and letter grade, with the ability to dynamically add or remove course rows and a live GPA calculation displayed prominently, supporting both cumulative and semester views.
-> The Pomodoro timer should feature a 25-minute countdown with start, pause, and reset controls, an audible bell on session completion, a browser notification on finish, and a session history panel with analytics showing total sessions, total focus time, and streaks.
-> The overall aesthetic should be minimal and modern with brutalist influences — bold borders, stark contrast, raw typography, strong typographic hierarchy, and purposeful whitespace, with cohesive styling carried across all modules.
+> The GPA calculator should have input fields for course name, course credits, and letter grade, with the ability to dynamically add or remove course rows and a live GPA calculation displayed prominently.
+> The Pomodoro timer should feature a 25-minute countdown with start, pause, and reset controls, an audible bell on session completion, a browser notification on finish, and a session history panel with analytics.
+> The overall aesthetic should be minimal and modern with brutalist influences — bold borders, stark contrast, strong typographic hierarchy, and purposeful whitespace, with cohesive styling carried across all modules.
 
 #### Prompt 03
 
