@@ -7,50 +7,82 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
-        <div class="header-top">
-          <h1>Group Idea Board</h1>
-          <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
-            <span class="icon">🌙</span>
-          </button>
-        </div>
-        <p>Collaborative academic space for our research and project ideas.</p>
-      </header>
+    <nav class="navbar">
+      <div class="nav-content">
+        <div class="nav-brand">IdeaBoard</div>
+        <ul class="nav-links">
+          <li><a href="#gpa">GPA calculator</a></li>
+          <li><a href="#timer">Study timer</a></li>
+        </ul>
+      </div>
+    </nav>
 
-      <section class="input-section">
-        <div class="input-card">
-          <textarea
-            id="ideaInput"
-            placeholder="Describe your idea or research point..."
-            rows="3"
-          ></textarea>
-          <div class="controls">
-            <select id="authorSelect">
-              <option value="" disabled selected>Select contributor</option>
-              <option value="Sandina">Sandina</option>
-              <option value="Ravindu">Ravindu</option>
-              <option value="Nesitha">Nesitha</option>
-              <option value="Dinithi">Dinithi</option>
-              <option value="Nethmi">Nethmi</option>
-              <option value="Thulana">Thulana</option>
-              <option value="Niduka">Niduka</option>
-              <option value="Chaneru">Chaneru</option>
-              <option value="Ivishan">Ivishan</option>
-            </select>
-            <button id="postBtn" class="primary-btn">Share Idea</button>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h3>Upcoming Events</h3>
+          <ul class="event-list">
+            <li>
+              <span class="event-date">Mar 12</span>
+              <span class="event-name">Research Sync</span>
+            </li>
+            <li>
+              <span class="event-date">Mar 15</span>
+              <span class="event-name">Group Presentation</span>
+            </li>
+            <li>
+              <span class="event-date">Mar 20</span>
+              <span class="event-name">Final Submission</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="container">
+        <header>
+          <div class="header-top">
+            <h1>Group Idea Board</h1>
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+              <span class="icon">🌙</span>
+            </button>
           </div>
-        </div>
-      </section>
+          <p>Collaborative academic space for our research and project ideas.</p>
+        </header>
 
-      <section class="board-section">
-        <div id="ideaBoard" class="idea-grid">
-          <!-- Ideas will be rendered here -->
-        </div>
-        <div id="emptyState" class="empty-state">
-          <p>No ideas yet. Be the first to post something amazing!</p>
-        </div>
-      </section>
+        <section class="input-section">
+          <div class="input-card">
+            <textarea
+              id="ideaInput"
+              placeholder="Describe your idea or research point..."
+              rows="3"
+            ></textarea>
+            <div class="controls">
+              <select id="authorSelect">
+                <option value="" disabled selected>Select contributor</option>
+                <option value="Sandina">Sandina</option>
+                <option value="Ravindu">Ravindu</option>
+                <option value="Nesitha">Nesitha</option>
+                <option value="Dinithi">Dinithi</option>
+                <option value="Nethmi">Nethmi</option>
+                <option value="Thulana">Thulana</option>
+                <option value="Niduka">Niduka</option>
+                <option value="Chaneru">Chaneru</option>
+                <option value="Ivishan">Ivishan</option>
+              </select>
+              <button id="postBtn" class="primary-btn">Share Idea</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="board-section">
+          <div id="ideaBoard" class="idea-grid">
+            <!-- Ideas will be rendered here -->
+          </div>
+          <div id="emptyState" class="empty-state">
+            <p>No ideas yet. Be the first to post something amazing!</p>
+          </div>
+        </section>
+      </main>
     </div>
     <script src="script.js"></script>
   </body>
