@@ -419,6 +419,8 @@ const modeTabs         = document.querySelectorAll('.mode-tab');
 const sessionsEl       = document.getElementById('sessionsToday');
 const focusTimeEl      = document.getElementById('totalFocusTime');
 const streakEl         = document.getElementById('currentStreak');
+const customTimerSettings = document.getElementById('customTimerSettings');
+const customMinutesInput  = document.getElementById('customMinutes');
 
 let timerInterval  = null;
 let timeRemaining  = 1500;
@@ -430,7 +432,7 @@ let sessionHistory = [];
 const MODE_LABELS = {
   'pomodoro':    'Focus session',
   'short-break': 'Short break',
-  'long-break':  'Long break'
+  'custom':      'Custom session'
 };
 
 function loadTimerData() {
@@ -616,8 +618,31 @@ modeTabs.forEach(tab => {
   tab.addEventListener('click', () => {
     modeTabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    setMode(tab.dataset.mode, parseInt(tab.dataset.seconds, 10));
+    
+    const mode = tab.dataset.mode;
+    
+    // Toggle custom settings visibility
+    if (mode === 'custom') {
+      customTimerSettings.style.display = 'block';
+      const seconds = parseInt(customMinutesInput.value, 10) * 60;
+      setMode(mode, seconds);
+    } else {
+      customTimerSettings.style.display = 'none';
+      setMode(mode, parseInt(tab.dataset.seconds, 10));
+    }
   });
+});
+
+// Custom minutes input change
+customMinutesInput.addEventListener('input', () => {
+  if (currentMode === 'custom') {
+    let mins = parseInt(customMinutesInput.value, 10);
+    if (isNaN(mins) || mins < 1) mins = 1;
+    if (mins > 999) mins = 999;
+    
+    const seconds = mins * 60;
+    setMode('custom', seconds);
+  }
 });
 
 startPauseBtn.addEventListener('click', () => {

@@ -988,6 +988,58 @@ select:focus {
   background: var(--border);
 }
 
+.custom-timer-settings {
+  display: none;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  animation: fadeIn 0.2s ease;
+}
+
+.custom-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.custom-input-group label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.custom-input-group input {
+  width: 70px;
+  padding: 0.4rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  outline: none;
+  text-align: center;
+}
+
+.custom-input-group input:focus {
+  border-color: var(--maroon);
+}
+
+[data-theme='dark'] .custom-input-group input:focus {
+  border-color: var(--gold);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .timer-display {
   font-size: 5.5rem;
   font-weight: 900;

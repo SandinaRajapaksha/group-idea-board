@@ -255,10 +255,19 @@
                 <button class="mode-tab" data-mode="short-break" data-seconds="300">
                   Short Break
                 </button>
-                <button class="mode-tab" data-mode="long-break" data-seconds="900">
-                  Long Break
+                <button class="mode-tab" data-mode="custom" data-seconds="600" id="customModeTab">
+                  Custom
                 </button>
               </div>
+              
+              <!-- Custom timer input, hidden by default -->
+              <div class="custom-timer-settings" id="customTimerSettings">
+                <div class="custom-input-group">
+                  <label for="customMinutes">Set Minutes</label>
+                  <input type="number" id="customMinutes" value="10" min="1" max="999" />
+                </div>
+              </div>
+
               <div class="timer-display" id="timerDisplay">25:00</div>
               <div class="timer-progress">
                 <div class="timer-progress-bar" id="timerProgressBar"></div>

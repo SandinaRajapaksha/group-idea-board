@@ -59,6 +59,10 @@ A hands-on group project from the **University of Colombo School of Computing (U
 #### Promt 04
 > the ideaboard feature needs some modifications:
 implement rich text formatting options to the textarea for idea content writing. do not modify any other features.
+
+#### Prompt 05
+> Change the long break section of the pomodoro to a custom time section where the user can set the length of the timer.
+
 ---
 
 ## GitHub Link
