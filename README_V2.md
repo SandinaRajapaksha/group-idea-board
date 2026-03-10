@@ -56,6 +56,9 @@ A hands-on group project from the **University of Colombo School of Computing (U
 #### Prompt 03
 > Please update the user interface to improve the visibility of the theme toggle. Currently, the icon is difficult to locate when dark mode is active due to low contrast. I would like the icon’s color to automatically transition to a vibrant, goldish yellow whenever the system enters dark mode, ensuring the button remains easily identifiable against a dark background.
 
+#### Promt 04
+> the ideaboard feature needs some modifications:
+implement rich text formatting options to the textarea for idea content writing. do not modify any other features.
 ---
 
 ## GitHub Link
