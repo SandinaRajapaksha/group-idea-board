@@ -399,9 +399,9 @@ clearCoursesBtn.addEventListener('click', () => {
 calculateGpaBtn.addEventListener('click', calculateGpa);
 
 // Seed initial rows
-addCourseRow('Introduction to CS', '3', 'A');
-addCourseRow('Calculus II', '4', 'B+');
-addCourseRow('Research Methods', '3', 'A-');
+addCourseRow();
+addCourseRow();
+addCourseRow();
 
 
 /* ─────────────────────────────────────────────

@@ -63,6 +63,9 @@ implement rich text formatting options to the textarea for idea content writing.
 #### Prompt 05
 > Change the long break section of the pomodoro to a custom time section where the user can set the length of the timer.
 
+#### Prompt 06
+> The gpa calculator section shouldn;t have placeholders by default
+
 ---
 
 ## GitHub Link
