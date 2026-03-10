@@ -36,7 +36,21 @@ A hands-on group project from the **University of Colombo School of Computing (U
 
 #### Prompt 01
 
->
+> role: front end developer
+
+> task: add a new navigation bar and a task bar
+
+> requirements:
+
+> 1.  navigation bar should be placed in the top of the page.
+> 2.  navigation bar should contain 'GPA calculator' and 'Study timer' as menu items.
+> 3.  sidebar should display a section titled “Upcoming Events.”
+> 4.  use CSS classes to organize the layout.
+
+> constraints:
+
+> 1.  only use pure html,css and javascript
+> 2.  navbar should stick on the top while scrolling.
 
 ---
 
