@@ -1,62 +1,162 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Group Idea Board</title>
+    <title>StudyBoard</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
     <nav class="navbar">
-      <div class="nav-content">
-        <div class="nav-brand">IdeaBoard</div>
-        <ul class="nav-links">
-          <li><a href="#gpa">GPA calculator</a></li>
-          <li><a href="#timer">Study timer</a></li>
-        </ul>
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <div class="logo-placeholder">SB</div>
+          <span class="brand-name">StudyBoard</span>
+        </div>
+
+        <div class="nav-links">
+          <button class="nav-link active" data-page="idea-board">Idea Board</button>
+          <button class="nav-link" data-page="gpa">GPA Calculator</button>
+          <button class="nav-link" data-page="timer">Study Timer</button>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span id="themeIcon">
+            <!-- sun (shown in dark mode) -->
+            <svg
+              id="iconSun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: none"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <!-- moon (shown in light mode) -->
+            <svg
+              id="iconMoon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+            </svg>
+          </span>
+        </button>
       </div>
     </nav>
 
-    <div class="app-layout">
+    <!-- ═══════════════════════ LAYOUT ═══════════════════════ -->
+    <div class="layout">
+      <!-- ───────── SIDEBAR ───────── -->
       <aside class="sidebar">
-        <div class="sidebar-card">
+        <div class="sidebar-header">
           <h3>Upcoming Events</h3>
-          <ul class="event-list">
-            <li>
-              <span class="event-date">Mar 12</span>
-              <span class="event-name">Research Sync</span>
-            </li>
-            <li>
-              <span class="event-date">Mar 15</span>
-              <span class="event-name">Group Presentation</span>
-            </li>
-            <li>
-              <span class="event-date">Mar 20</span>
-              <span class="event-name">Final Submission</span>
-            </li>
-          </ul>
         </div>
+        <ul class="event-list">
+          <li class="event-item">
+            <div class="event-date">Mar 15</div>
+            <div class="event-info">
+              <span class="event-title">Research Proposal Due</span>
+              <span class="event-tag tag-urgent">Urgent</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Mar 18</div>
+            <div class="event-info">
+              <span class="event-title">Group Meeting — Library B2</span>
+              <span class="event-tag tag-meeting">Meeting</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Mar 22</div>
+            <div class="event-info">
+              <span class="event-title">Midterm Exam — CS301</span>
+              <span class="event-tag tag-exam">Exam</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Mar 25</div>
+            <div class="event-info">
+              <span class="event-title">Literature Review Draft</span>
+              <span class="event-tag tag-assignment">Assignment</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Apr 1</div>
+            <div class="event-info">
+              <span class="event-title">Semester Project Presentation</span>
+              <span class="event-tag tag-exam">Presentation</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Apr 5</div>
+            <div class="event-info">
+              <span class="event-title">Final Report Submission</span>
+              <span class="event-tag tag-urgent">Urgent</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Apr 10</div>
+            <div class="event-info">
+              <span class="event-title">Peer Review — Lab 3</span>
+              <span class="event-tag tag-assignment">Assignment</span>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Apr 14</div>
+            <div class="event-info">
+              <span class="event-title">Study Group Session</span>
+              <span class="event-tag tag-meeting">Meeting</span>
+            </div>
+          </li>
+        </ul>
       </aside>
 
-      <main class="container">
-        <header>
-          <div class="header-top">
-            <h1>Group Idea Board</h1>
-            <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
-              <span class="icon">🌙</span>
-            </button>
+      <!-- ───────── MAIN CONTENT ───────── -->
+      <main class="main-content">
+        <!-- ══════ PAGE: IDEA BOARD ══════ -->
+        <section class="page active" id="page-idea-board">
+          <div class="page-header">
+            <h1 class="page-title"><span>Idea</span> Board</h1>
+            <p class="page-subtitle">
+              Collaborative academic space for research and project ideas.
+            </p>
           </div>
-          <p>Collaborative academic space for our research and project ideas.</p>
-        </header>
 
-        <section class="input-section">
           <div class="input-card">
             <textarea
               id="ideaInput"
               placeholder="Describe your idea or research point..."
               rows="3"
             ></textarea>
-            <div class="controls">
+            <div class="input-controls">
               <select id="authorSelect">
                 <option value="" disabled selected>Select contributor</option>
                 <option value="Sandina">Sandina</option>
@@ -69,21 +169,115 @@
                 <option value="Chaneru">Chaneru</option>
                 <option value="Ivishan">Ivishan</option>
               </select>
-              <button id="postBtn" class="primary-btn">Share Idea</button>
+              <button id="postBtn" class="btn btn-primary">Share Idea</button>
+            </div>
+          </div>
+
+          <div id="ideaBoard" class="idea-grid"></div>
+          <div id="emptyState" class="empty-state">
+            <div class="empty-icon">💡</div>
+            <p>No ideas yet. Be the first to post something brilliant.</p>
+          </div>
+        </section>
+
+        <!-- ══════ PAGE: GPA CALCULATOR ══════ -->
+        <section class="page" id="page-gpa">
+          <div class="page-header">
+            <h1 class="page-title"><span>GPA</span> Calculator</h1>
+            <p class="page-subtitle">
+              Calculate your weighted GPA based on course credits and grades.
+            </p>
+          </div>
+
+          <div class="gpa-container">
+            <div class="courses-table">
+              <div class="table-header">
+                <span>Course Name</span>
+                <span>Credits</span>
+                <span>Grade</span>
+                <span></span>
+              </div>
+              <div id="courseRows"></div>
+            </div>
+
+            <div class="gpa-actions">
+              <button class="btn btn-outline" id="addCourseBtn">+ Add Course</button>
+              <button class="btn btn-outline" id="clearCoursesBtn">Clear All</button>
+            </div>
+
+            <div class="gpa-result-panel">
+              <button class="btn btn-primary" id="calculateGpaBtn">Calculate GPA</button>
+              <div class="gpa-result">
+                <div class="gpa-number" id="gpaValue">—</div>
+                <div class="gpa-label">Cumulative GPA</div>
+              </div>
+              <div class="gpa-breakdown" id="gpaBreakdown"></div>
             </div>
           </div>
         </section>
 
-        <section class="board-section">
-          <div id="ideaBoard" class="idea-grid">
-            <!-- Ideas will be rendered here -->
+        <!-- ══════ PAGE: STUDY TIMER ══════ -->
+        <section class="page" id="page-timer">
+          <div class="page-header">
+            <h1 class="page-title"><span>Study</span> Timer</h1>
+            <p class="page-subtitle">
+              Pomodoro technique — 25 minutes of deep, uninterrupted focus.
+            </p>
           </div>
-          <div id="emptyState" class="empty-state">
-            <p>No ideas yet. Be the first to post something amazing!</p>
+
+          <div class="timer-layout">
+            <div class="timer-card">
+              <div class="timer-mode-tabs">
+                <button class="mode-tab active" data-mode="pomodoro" data-seconds="1500">
+                  Focus
+                </button>
+                <button class="mode-tab" data-mode="short-break" data-seconds="300">
+                  Short Break
+                </button>
+                <button class="mode-tab" data-mode="long-break" data-seconds="900">
+                  Long Break
+                </button>
+              </div>
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <div class="timer-progress">
+                <div class="timer-progress-bar" id="timerProgressBar"></div>
+              </div>
+              <div class="timer-controls">
+                <button class="btn btn-outline timer-btn" id="resetBtn">Reset</button>
+                <button class="btn btn-primary timer-btn" id="startPauseBtn">Start</button>
+              </div>
+              <p class="timer-status" id="timerStatus">Ready to focus</p>
+            </div>
+
+            <div class="timer-analytics">
+              <h3>Session Analytics</h3>
+              <div class="stats-row">
+                <div class="stat-card">
+                  <div class="stat-value" id="sessionsToday">0</div>
+                  <div class="stat-label">Today</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value" id="totalFocusTime">0m</div>
+                  <div class="stat-label">Total Focus</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value" id="currentStreak">0</div>
+                  <div class="stat-label">Streak</div>
+                </div>
+              </div>
+              <div class="session-log-header">
+                <span>Recent Sessions</span>
+                <button class="clear-log-btn" id="clearLogBtn">Clear</button>
+              </div>
+              <div class="session-log" id="sessionLog">
+                <p class="log-empty">No sessions yet. Start focusing!</p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
