@@ -474,6 +474,60 @@ body {
   box-shadow: var(--shadow-card);
 }
 
+.formatting-toolbar {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.format-btn {
+  width: 32px;
+  height: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--t),
+    border-color var(--t),
+    color var(--t);
+  color: var(--text);
+}
+
+.format-btn:hover {
+  background: var(--bg);
+  border-color: var(--maroon);
+  color: var(--maroon);
+}
+
+[data-theme='dark'] .format-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.format-btn:active {
+  transform: scale(0.95);
+}
+
+.format-divider {
+  height: 20px;
+  width: 1px;
+  background: var(--border);
+  margin: 0 0.2rem;
+}
+
 textarea {
   width: 100%;
   padding: 0.85rem 1rem;
@@ -577,6 +631,49 @@ select:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.6;
+}
+
+.idea-card .content strong {
+  font-weight: 700;
+}
+
+.idea-card .content em {
+  font-style: italic;
+}
+
+.idea-card .content u {
+  text-decoration: underline;
+}
+
+.idea-card .content s {
+  text-decoration: line-through;
+}
+
+.idea-card .content code {
+  background: var(--surface-2);
+  padding: 0 0.3rem;
+  border-radius: 2px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+}
+
+.idea-card .content a {
+  color: var(--maroon);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--t);
+}
+
+.idea-card .content a:hover {
+  color: var(--maroon-hover);
+}
+
+[data-theme='dark'] .idea-card .content a {
+  color: var(--gold);
+}
+
+[data-theme='dark'] .idea-card .content a:hover {
+  color: var(--gold-light);
 }
 
 .idea-card.expanded .content {

@@ -87,6 +87,37 @@ function escapeHtml(text) {
   return d.innerHTML;
 }
 
+function parseMarkdown(text) {
+  // Escape HTML first
+  let html = escapeHtml(text);
+  
+  // Convert markdown syntax to HTML
+  // Bold: **text** or __text__
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+  
+  // Italic: *text* or _text_
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  html = html.replace(/_(.+?)_/g, '<em>$1</em>');
+  
+  // Underline: ++text++
+  html = html.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
+  
+  // Strikethrough: ~~text~~
+  html = html.replace(/~~(.+?)~~/g, '<s>$1</s>');
+  
+  // Code: `text`
+  html = html.replace(/`(.+?)`/g, '<code>$1</code>');
+  
+  // Links: [text](url)
+  html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  
+  // Preserve line breaks
+  html = html.replace(/\n/g, '<br>');
+  
+  return html;
+}
+
 function renderIdeas() {
   ideaBoard.innerHTML = '';
 
@@ -103,11 +134,21 @@ function renderIdeas() {
       const card = createIdeaCard(idea);
       ideaBoard.appendChild(card);
 
-      const content   = card.querySelector('.content');
-      const readMoreBtn = card.querySelector('.read-more-btn');
-      if (content.scrollHeight > content.clientHeight) {
-        readMoreBtn.style.display = 'block';
-      }
+      // Use requestAnimationFrame and a longer timeout to ensure CSS is applied
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const content = card.querySelector('.content');
+          const readMoreBtn = card.querySelector('.read-more-btn');
+          
+          if (!content || !readMoreBtn) return;
+          
+          // Check if content is overflowing (comparing scrollHeight with visible height)
+          // Add small buffer for safety
+          if (content.scrollHeight > content.clientHeight + 2) {
+            readMoreBtn.style.display = 'block';
+          }
+        }, 50);
+      });
     });
 }
 
@@ -117,11 +158,12 @@ function createIdeaCard(idea) {
   card.id = `idea-${idea.id}`;
 
   const initial = idea.author.charAt(0).toUpperCase();
+  const parsedContent = parseMarkdown(idea.text);
 
   card.innerHTML = `
     <button class="delete-btn" title="Delete" onclick="deleteIdea(${idea.id})">✕</button>
     <div class="content-wrapper">
-      <div class="content">${escapeHtml(idea.text)}</div>
+      <div class="content">${parsedContent}</div>
       <button class="read-more-btn" onclick="toggleReadMore(${idea.id})">Read more</button>
     </div>
     <div class="card-footer">
@@ -196,6 +238,59 @@ document.head.appendChild(shakeStyle);
 postBtn.addEventListener('click', postIdea);
 ideaInput.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') postIdea();
+});
+
+// ─────────────────────────────────────────────
+// FORMATTING BUTTONS
+// ─────────────────────────────────────────────
+const formatButtons = {
+  boldBtn: { prefix: '**', suffix: '**', placeholder: 'text' },
+  italicBtn: { prefix: '*', suffix: '*', placeholder: 'text' },
+  underlineBtn: { prefix: '++', suffix: '++', placeholder: 'text' },
+  strikeBtn: { prefix: '~~', suffix: '~~', placeholder: 'text' },
+  codeBtn: { prefix: '`', suffix: '`', placeholder: 'code' },
+  linkBtn: { prefix: '[', suffix: '](url)', placeholder: 'link text' }
+};
+
+function insertMarkdown(prefix, suffix, placeholder) {
+  const start = ideaInput.selectionStart;
+  const end = ideaInput.selectionEnd;
+  const text = ideaInput.value;
+  const selectedText = text.substring(start, end) || placeholder;
+  
+  const newText = text.substring(0, start) + prefix + selectedText + suffix + text.substring(end);
+  ideaInput.value = newText;
+  
+  // Move cursor to inside the formatting
+  const cursorPos = start + prefix.length + selectedText.length;
+  ideaInput.focus();
+  ideaInput.setSelectionRange(cursorPos, cursorPos);
+}
+
+Object.entries(formatButtons).forEach(([btnId, config]) => {
+  const btn = document.getElementById(btnId);
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      insertMarkdown(config.prefix, config.suffix, config.placeholder);
+    });
+  }
+});
+
+// Keyboard shortcuts
+ideaInput.addEventListener('keydown', (e) => {
+  if (e.ctrlKey || e.metaKey) {
+    if (e.key === 'b' || e.key === 'B') {
+      e.preventDefault();
+      insertMarkdown('**', '**', 'text');
+    } else if (e.key === 'i' || e.key === 'I') {
+      e.preventDefault();
+      insertMarkdown('*', '*', 'text');
+    } else if (e.key === 'u' || e.key === 'U') {
+      e.preventDefault();
+      insertMarkdown('++', '++', 'text');
+    }
+  }
 });
 
 loadIdeas();
