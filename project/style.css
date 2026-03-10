@@ -196,6 +196,15 @@ body {
   box-shadow: 3px 3px 0px var(--border-strong);
 }
 
+[data-theme='dark'] .theme-toggle {
+  color: var(--gold);
+  border-color: var(--border-strong);
+}
+
+[data-theme='dark'] .theme-toggle:hover {
+  border-color: var(--gold);
+}
+
 /* ── LAYOUT ── */
 .layout {
   display: flex;
