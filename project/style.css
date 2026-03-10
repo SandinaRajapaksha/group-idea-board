@@ -77,6 +77,27 @@ body {
     color var(--t);
 }
 
+/* ── HEADER ── */
+header {
+  padding: 2.25rem 1.5rem 1.5rem;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-top .logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: var(--r);
+  box-shadow: 2px 2px 0px var(--border-strong);
+}
+
 /* ── NAVBAR ── */
 .navbar {
   position: fixed;
@@ -123,6 +144,15 @@ body {
   border: 1px solid var(--maroon-dark);
   box-shadow: 2px 2px 0px var(--maroon-dark);
   border-radius: var(--r);
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: var(--r);
+  box-shadow: 2px 2px 0px var(--maroon-dark);
   flex-shrink: 0;
 }
 
