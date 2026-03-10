@@ -79,13 +79,15 @@ https://github.com/SandinaRajapaksha/group-idea-board
 
 ### Screenshots
 
+![1.png](https://github.com/SandinaRajapaksha/group-idea-board/blob/main/1.png?raw=true)
+![2.png](https://github.com/SandinaRajapaksha/group-idea-board/blob/main/2.png?raw=true)
+![3.png](https://github.com/SandinaRajapaksha/group-idea-board/blob/main/3.png?raw=true)
+
 ---
 
-### Summary
+### Summary & Experience
 
----
-
-### Experience
+Gained hands-on experience with AI-assisted web development workflows, exploring the collaborative dynamic between developer intent and AI code generation. Developed a practical understanding of where AI accelerates the development process as well as its limitations, including context boundaries and the need for developer oversight on architectural decisions. Became familiar with web development workflows, encompassing version control practices and the iterative cycle of building, testing, and shipping.
 
 ---
 
