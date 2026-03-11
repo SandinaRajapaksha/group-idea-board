@@ -47,6 +47,12 @@
 *Result*: Lenghtier ideas get truncated into 4 lines.
 *Fix*: "if the user has entered an idea with a very long text, the text gets trauncated into just 4 lines to keep up with the grid style, making the idea not fully visible. to fix this, make the idea cards clickable and once clicked, it should display the full idea within the same page on an overlay. Also add a Read More text as a visible indication"  
 
+#### Test 04 (code type input)
+
+*Expectation*: Auto recognizes code-like input and wraps them inside a codeblock
+*Result*: Code-like input is treated as normal text
+*Fix*: the rich text format area already has an option to manually add code block but if the user forgets to click it and kept typing code as usual, it would not displayed as a codeblock once submitted. check the user input before submitting fir potential code writing and either prompt the user or automatically wrap only the code part within with code
+
 ---
 
 ## The Fake API
