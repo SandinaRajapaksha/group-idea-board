@@ -53,6 +53,20 @@
 *Result*: Code-like input is treated as normal text
 *Fix*: the rich text format area already has an option to manually add code block but if the user forgets to click it and kept typing code as usual, it would not displayed as a codeblock once submitted. check the user input before submitting fir potential code writing and either prompt the user or automatically wrap only the code part within with code
 
+#### Test 05 (Leading and trailing spaces)
+
+*Expectation*: Detect duplications regardless of leading or tailing spaces, and issue warnings.
+*Result*: Duplicate ideas are treated as duplications regardless of leading or trailing spaces.
+
+#### Test 06 (Page Refresh)
+
+*Expectations*: Ideas are retained on page refresh. 
+*Result*: Ideas are retain on localStorage on page refersh.
+
+#### Test 07 (Rapid Button Clicking)
+*Expectations*: Disregard rapid button clicking to avoid unnecessary duplications.
+*Result*: Button responses are near instantaneous. Rapid clicking could not trigger any duplications.
+
 #### Test 08 (Responsivity)
 *Expectation*: Respsoncive UI that adapts to a range of screen sizes, with different layouts for different size limits.
 *Result*: The sidebar and the the header is not responsive and the content goes out of bounds on smaller screens. 
