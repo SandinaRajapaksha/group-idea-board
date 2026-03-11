@@ -133,22 +133,6 @@ function renderIdeas() {
     .forEach(idea => {
       const card = createIdeaCard(idea);
       ideaBoard.appendChild(card);
-
-      // Use requestAnimationFrame and a longer timeout to ensure CSS is applied
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          const content = card.querySelector('.content');
-          const readMoreBtn = card.querySelector('.read-more-btn');
-          
-          if (!content || !readMoreBtn) return;
-          
-          // Check if content is overflowing (comparing scrollHeight with visible height)
-          // Add small buffer for safety
-          if (content.scrollHeight > content.clientHeight + 2) {
-            readMoreBtn.style.display = 'block';
-          }
-        }, 50);
-      });
     });
 }
 
@@ -161,10 +145,10 @@ function createIdeaCard(idea) {
   const parsedContent = parseMarkdown(idea.text);
 
   card.innerHTML = `
-    <button class="delete-btn" title="Delete" onclick="deleteIdea(${idea.id})">✕</button>
+    <button class="delete-btn" title="Delete" onclick="deleteIdea(${idea.id}); event.stopPropagation();">✕</button>
     <div class="content-wrapper">
       <div class="content">${parsedContent}</div>
-      <button class="read-more-btn" onclick="toggleReadMore(${idea.id})">Read more</button>
+      <button class="read-more-btn" onclick="openIdeaModal({id: ${idea.id}, text: \`${idea.text.replace(/`/g, '\\`')}\`, author: '${idea.author}', timestamp: '${idea.timestamp}'}); event.stopPropagation();">Read More</button>
     </div>
     <div class="card-footer">
       <div class="author-tag">
@@ -175,14 +159,65 @@ function createIdeaCard(idea) {
     </div>
   `;
 
+  // Add click handler to open modal (only if not clicking read-more, which has its own handler)
+  card.addEventListener('click', (e) => {
+    if (!e.target.closest('.delete-btn') && !e.target.closest('.read-more-btn')) {
+      openIdeaModal(idea);
+    }
+  });
+
+  // Detect if content is truncated and show read-more button
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      const content = card.querySelector('.content');
+      const readMoreBtn = card.querySelector('.read-more-btn');
+      
+      if (!content || !readMoreBtn) return;
+      
+      // Check if content is overflowing
+      if (content.scrollHeight > content.clientHeight + 2) {
+        readMoreBtn.style.display = 'block';
+      } else {
+        readMoreBtn.style.display = 'none';
+      }
+    }, 50);
+  });
+
   return card;
 }
 
-function toggleReadMore(id) {
-  const card = document.getElementById(`idea-${id}`);
-  const btn  = card.querySelector('.read-more-btn');
-  const expanded = card.classList.toggle('expanded');
-  btn.textContent = expanded ? 'Show less' : 'Read more';
+function openIdeaModal(idea) {
+  const modal = document.getElementById('ideaModal');
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalCloseBtn');
+  const avatar = document.getElementById('modalAvatar');
+  const authorName = document.getElementById('modalAuthorName');
+  const timestamp = document.getElementById('modalTimestamp');
+  const content = document.getElementById('modalIdeaContent');
+
+  const initial = idea.author.charAt(0).toUpperCase();
+  const parsedContent = parseMarkdown(idea.text);
+
+  avatar.textContent = initial;
+  authorName.textContent = idea.author;
+  timestamp.textContent = idea.timestamp;
+  content.innerHTML = parsedContent;
+
+  modal.classList.remove('hidden');
+
+  // Close handlers
+  const closeModal = () => modal.classList.add('hidden');
+  closeBtn.onclick = closeModal;
+  overlay.onclick = closeModal;
+
+  // ESC key to close
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      document.removeEventListener('keydown', handleEscape);
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
 }
 
 function showDuplicateWarning(author) {
