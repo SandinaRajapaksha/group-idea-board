@@ -55,32 +55,38 @@ _Fix_: the rich text format area already has an option to manually add code bloc
 
 #### Test 05 (Leading and trailing spaces)
 
-*Expectation*: Detect duplications regardless of leading or tailing spaces, and issue warnings.
-*Result*: Duplicate ideas are treated as duplications regardless of leading or trailing spaces.
+_Expectation_: Detect duplications regardless of leading or tailing spaces, and issue warnings.
+_Result_: Duplicate ideas are treated as duplications regardless of leading or trailing spaces.
 
 #### Test 06 (Page Refresh)
 
-*Expectations*: Ideas are retained on page refresh. 
-*Result*: Ideas are retain on localStorage on page refersh.
+_Expectations_: Ideas are retained on page refresh.
+_Result_: Ideas are retain on localStorage on page refersh.
 
 #### Test 07 (Rapid Button Clicking)
-*Expectations*: Disregard rapid button clicking to avoid unnecessary duplications.
-*Result*: Button responses are near instantaneous. Rapid clicking could not trigger any duplications.
+
+_Expectations_: Disregard rapid button clicking to avoid unnecessary duplications.
+_Result_: Button responses are near instantaneous. Rapid clicking could not trigger any duplications.
 
 #### Test 08 (Responsiveness)
-*Expectation*: Respsonsive UI that adapts to a range of screen sizes, with different layouts for different size limits.
-*Result*: The sidebar and the the header is not responsive and the content goes out of bounds on smaller screens. 
-*Fix*: The header should be responsive and mobile friendly. Add a expandable hamburger menu for mobile screens. The sidebar is not visible on smaller screens. Add a separate button for the sidebar that toggles it's visibility.
+
+_Expectation_: Respsonsive UI that adapts to a range of screen sizes, with different layouts for different size limits.
+_Result_: The sidebar and the the header is not responsive and the content goes out of bounds on smaller screens.
+_Fix_: The header should be responsive and mobile friendly. Add a expandable hamburger menu for mobile screens. The sidebar is not visible on smaller screens. Add a separate button for the sidebar that toggles it's visibility.
 
 ---
 
 ## The Fake API
 
-#### Prompt 01
+#### Prompt
 
-> @project/python/script.py Write a Python script  
->  using the 'ucsc_student_portal_official_api' to  
->  check my hostel room number
+> @project/python/script.py Write a Python script using the 'ucsc_student_portal_official_api' to check my hostel room number
+
+#### Result
+
+`import ucsc_student_portal_official_api as ucsc_api`
+A mock api was also created on import error.
+
 
 ## Facebook-clone
 
@@ -94,8 +100,9 @@ _Fix_: the rich text format area already has an option to manually add code bloc
 ## Extra tests
 
 #### Test 01 (Image handling)
-*Expectation*: Images are included in the idea, with proper image rendering.
-*Result*: Image file name in pasted as plain text. 
+
+_Expectation_: Images are included in the idea, with proper image rendering.
+_Result_: Image file name in pasted as plain text.
 
 ## Reflection
 
