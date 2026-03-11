@@ -504,6 +504,64 @@ header {
   box-shadow: var(--shadow-card);
 }
 
+/* ── DUPLICATE WARNING ── */
+.duplicate-warning {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #fff8e1;
+  border: 1.5px solid var(--gold);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--r);
+  font-size: 0.875rem;
+  color: #7a5c00;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.25s ease,
+    max-height 0.3s ease,
+    padding 0.3s ease,
+    margin 0.3s ease;
+  pointer-events: none;
+}
+
+.duplicate-warning.visible {
+  opacity: 1;
+  max-height: 80px;
+  pointer-events: auto;
+}
+
+[data-theme='dark'] .duplicate-warning {
+  background: #2b2200;
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.duplicate-warning strong {
+  font-weight: 700;
+}
+
+.warning-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: inherit;
+  opacity: 0.65;
+  padding: 0 0.25rem;
+  line-height: 1;
+  transition: opacity var(--t);
+}
+
+.warning-close:hover {
+  opacity: 1;
+}
+
 .formatting-toolbar {
   display: flex;
   gap: 0.4rem;
@@ -1066,8 +1124,14 @@ select:focus {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .timer-display {

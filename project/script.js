@@ -185,12 +185,45 @@ function toggleReadMore(id) {
   btn.textContent = expanded ? 'Show less' : 'Read more';
 }
 
+function showDuplicateWarning(author) {
+  let warning = document.getElementById('duplicateWarning');
+  if (!warning) {
+    warning = document.createElement('div');
+    warning.id = 'duplicateWarning';
+    warning.className = 'duplicate-warning';
+    const inputCard = document.querySelector('.input-card');
+    inputCard.insertAdjacentElement('afterend', warning);
+  }
+
+  warning.innerHTML = `
+    <span>⚠ <strong>${escapeHtml(author)}</strong> has already posted this exact idea.</span>
+    <button class="warning-close" onclick="closeDuplicateWarning()">✕</button>
+  `;
+  warning.classList.add('visible');
+
+  clearTimeout(warning._dismissTimer);
+  warning._dismissTimer = setTimeout(closeDuplicateWarning, 5000);
+}
+
+function closeDuplicateWarning() {
+  const warning = document.getElementById('duplicateWarning');
+  if (warning) warning.classList.remove('visible');
+}
+
 function postIdea() {
   const text   = ideaInput.value.trim();
   const author = authorSelect.value;
 
   if (!text)   { shakeField(ideaInput); return; }
   if (!author) { shakeField(authorSelect); return; }
+
+  // Warn (but don't block) if same contributor already posted identical text
+  const normalised = text.toLowerCase().replace(/\s+/g, ' ');
+  const isDuplicate = ideas.some(
+    idea => idea.author === author &&
+            idea.text.trim().toLowerCase().replace(/\s+/g, ' ') === normalised
+  );
+  if (isDuplicate) showDuplicateWarning(author);
 
   ideas.push({
     id: Date.now(),

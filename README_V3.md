@@ -35,6 +35,11 @@
 *Expectation*: Reject ideas without content or contributor, with responsive error messages.
 *Result*: Responsive rejection(input shake animation) of empty ideas, or ideass with no contributor selected.  
 
+#### Test 02 (Duplicate Ideas)
+
+*Expectation*: Warn when duplicated ideas from the same contributor are added.
+*Result*: Duplicate ideas are allowed with no warning or error.
+*Fix*: "There should be a warning message when duplicate ideas are added to the idea board from the same contributor, but not rejected. #file:index.html"  
 
 
 ---
