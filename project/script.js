@@ -118,6 +118,45 @@ function parseMarkdown(text) {
   return html;
 }
 
+function wrapHtmlTagsAsCode(text) {
+  // Wrap "<tag>" patterns in backticks so they render as code rather than being treated as HTML.
+  // We avoid modifying content already inside backticks.
+  let output = '';
+  let i = 0;
+
+  while (i < text.length) {
+    if (text[i] === '`') {
+      const end = text.indexOf('`', i + 1);
+      if (end === -1) {
+        output += text.slice(i);
+        break;
+      }
+      // Preserve existing code spans as-is
+      output += text.slice(i, end + 1);
+      i = end + 1;
+      continue;
+    }
+
+    if (text[i] === '<') {
+      const end = text.indexOf('>', i + 1);
+      if (end !== -1) {
+        const tag = text.slice(i, end + 1);
+        // Only wrap likely HTML tags (simple check)
+        if (/^<\/?[a-zA-Z][^>]*>$/.test(tag)) {
+          output += '`' + tag + '`';
+          i = end + 1;
+          continue;
+        }
+      }
+    }
+
+    output += text[i];
+    i += 1;
+  }
+
+  return output;
+}
+
 function renderIdeas() {
   ideaBoard.innerHTML = '';
 
@@ -133,22 +172,6 @@ function renderIdeas() {
     .forEach(idea => {
       const card = createIdeaCard(idea);
       ideaBoard.appendChild(card);
-
-      // Use requestAnimationFrame and a longer timeout to ensure CSS is applied
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          const content = card.querySelector('.content');
-          const readMoreBtn = card.querySelector('.read-more-btn');
-          
-          if (!content || !readMoreBtn) return;
-          
-          // Check if content is overflowing (comparing scrollHeight with visible height)
-          // Add small buffer for safety
-          if (content.scrollHeight > content.clientHeight + 2) {
-            readMoreBtn.style.display = 'block';
-          }
-        }, 50);
-      });
     });
 }
 
@@ -161,10 +184,10 @@ function createIdeaCard(idea) {
   const parsedContent = parseMarkdown(idea.text);
 
   card.innerHTML = `
-    <button class="delete-btn" title="Delete" onclick="deleteIdea(${idea.id})">✕</button>
+    <button class="delete-btn" title="Delete" onclick="deleteIdea(${idea.id}); event.stopPropagation();">✕</button>
     <div class="content-wrapper">
       <div class="content">${parsedContent}</div>
-      <button class="read-more-btn" onclick="toggleReadMore(${idea.id})">Read more</button>
+      <button class="read-more-btn" onclick="openIdeaModal({id: ${idea.id}, text: \`${idea.text.replace(/`/g, '\\`')}\`, author: '${idea.author}', timestamp: '${idea.timestamp}'}); event.stopPropagation();">Read More</button>
     </div>
     <div class="card-footer">
       <div class="author-tag">
@@ -175,22 +198,135 @@ function createIdeaCard(idea) {
     </div>
   `;
 
+  // Add click handler to open modal (only if not clicking read-more, which has its own handler)
+  card.addEventListener('click', (e) => {
+    if (!e.target.closest('.delete-btn') && !e.target.closest('.read-more-btn')) {
+      openIdeaModal(idea);
+    }
+  });
+
+  // Detect if content is truncated and show read-more button
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      const content = card.querySelector('.content');
+      const readMoreBtn = card.querySelector('.read-more-btn');
+      
+      if (!content || !readMoreBtn) return;
+      
+      // Check if content is overflowing
+      if (content.scrollHeight > content.clientHeight + 2) {
+        readMoreBtn.style.display = 'block';
+      } else {
+        readMoreBtn.style.display = 'none';
+      }
+    }, 50);
+  });
+
   return card;
 }
 
-function toggleReadMore(id) {
-  const card = document.getElementById(`idea-${id}`);
-  const btn  = card.querySelector('.read-more-btn');
-  const expanded = card.classList.toggle('expanded');
-  btn.textContent = expanded ? 'Show less' : 'Read more';
+function openIdeaModal(idea) {
+  const modal = document.getElementById('ideaModal');
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalCloseBtn');
+  const avatar = document.getElementById('modalAvatar');
+  const authorName = document.getElementById('modalAuthorName');
+  const timestamp = document.getElementById('modalTimestamp');
+  const content = document.getElementById('modalIdeaContent');
+
+  const initial = idea.author.charAt(0).toUpperCase();
+  const parsedContent = parseMarkdown(idea.text);
+
+  avatar.textContent = initial;
+  authorName.textContent = idea.author;
+  timestamp.textContent = idea.timestamp;
+  content.innerHTML = parsedContent;
+
+  modal.classList.remove('hidden');
+
+  // Close handlers
+  const closeModal = () => modal.classList.add('hidden');
+  closeBtn.onclick = closeModal;
+  overlay.onclick = closeModal;
+
+  // ESC key to close
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      document.removeEventListener('keydown', handleEscape);
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+}
+
+function showDuplicateWarning(author) {
+  let warning = document.getElementById('duplicateWarning');
+  if (!warning) {
+    warning = document.createElement('div');
+    warning.id = 'duplicateWarning';
+    warning.className = 'duplicate-warning';
+    const inputCard = document.querySelector('.input-card');
+    inputCard.insertAdjacentElement('afterend', warning);
+  }
+
+  warning.innerHTML = `
+    <span>⚠ <strong>${escapeHtml(author)}</strong> has already posted this exact idea.</span>
+    <button class="warning-close" onclick="closeDuplicateWarning()">✕</button>
+  `;
+  warning.classList.add('visible');
+
+  clearTimeout(warning._dismissTimer);
+  warning._dismissTimer = setTimeout(closeDuplicateWarning, 5000);
+}
+
+function closeDuplicateWarning() {
+  const warning = document.getElementById('duplicateWarning');
+  if (warning) warning.classList.remove('visible');
+}
+
+function showHtmlCodeNotice() {
+  let notice = document.getElementById('codeWrapNotice');
+  if (!notice) {
+    notice = document.createElement('div');
+    notice.id = 'codeWrapNotice';
+    notice.className = 'duplicate-warning';
+    const inputCard = document.querySelector('.input-card');
+    inputCard.insertAdjacentElement('afterend', notice);
+  }
+
+  notice.innerHTML = `
+    <span>⚠ Detected HTML-like syntax (e.g. <code>&lt;script&gt;</code>); it has been wrapped as code for safety.</span>
+    <button class="warning-close" onclick="closeHtmlCodeNotice()">✕</button>
+  `;
+  notice.classList.add('visible');
+
+  clearTimeout(notice._dismissTimer);
+  notice._dismissTimer = setTimeout(closeHtmlCodeNotice, 5000);
+}
+
+function closeHtmlCodeNotice() {
+  const notice = document.getElementById('codeWrapNotice');
+  if (notice) notice.classList.remove('visible');
 }
 
 function postIdea() {
-  const text   = ideaInput.value.trim();
+  const rawText = ideaInput.value;
+  const wrappedText = wrapHtmlTagsAsCode(rawText);
+  if (wrappedText !== rawText) showHtmlCodeNotice();
+
+  const text   = wrappedText.trim();
   const author = authorSelect.value;
 
   if (!text)   { shakeField(ideaInput); return; }
   if (!author) { shakeField(authorSelect); return; }
+
+  // Warn (but don't block) if same contributor already posted identical text
+  const normalised = text.toLowerCase().replace(/\s+/g, ' ');
+  const isDuplicate = ideas.some(
+    idea => idea.author === author &&
+            idea.text.trim().toLowerCase().replace(/\s+/g, ' ') === normalised
+  );
+  if (isDuplicate) showDuplicateWarning(author);
 
   ideas.push({
     id: Date.now(),
