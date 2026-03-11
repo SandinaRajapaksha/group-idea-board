@@ -30,7 +30,10 @@
 
 ## Crash Report
 
-#### Test 01
+#### Test 01 (Empty Input)
+
+*Expectation*: Reject ideas without content or contributor, with responsive error messages.
+*Result*: Responsive rejection(input shake animation) of empty ideas, or ideass with no contributor selected.  
 
 
 
