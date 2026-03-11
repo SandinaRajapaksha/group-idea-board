@@ -57,6 +57,8 @@ _Fix_: the rich text format area already has an option to manually add code bloc
 
 ## The Fake API
 
+#### Prompt 01
+
 > @project/python/script.py Write a Python script  
 >  using the 'ucsc_student_portal_official_api' to  
 >  check my hostel room number
