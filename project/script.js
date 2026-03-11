@@ -5,27 +5,74 @@
 /* ─────────────────────────────────────────────
    1. NAVIGATION
 ───────────────────────────────────────────── */
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav-links .nav-link');
 const pages    = document.querySelectorAll('.page');
 
+// (event listeners for nav links are added later, after the improved navigateTo definition)
+
+// --- mobile menu / sidebar toggle ------------------------------------------------
+const menuToggle = document.getElementById('menuToggle');
+const menuOverlay = document.getElementById('menuOverlay');
+const sidebar = document.querySelector('.sidebar');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-links .nav-link');
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  menuOverlay.classList.remove('visible');
+  menuOverlay.classList.add('hidden');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+function openSidebar() {
+  sidebar.classList.add('open');
+  menuOverlay.classList.remove('hidden');
+  menuOverlay.classList.add('visible');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+menuToggle.addEventListener('click', () => {
+  if (sidebar.classList.contains('open')) closeSidebar();
+  else openSidebar();
+});
+
+// close when overlay clicked or when window is resized above breakpoint
+menuOverlay.addEventListener('click', closeSidebar);
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeSidebar();
+});
+
+// add click behaviour to desktop nav links (also close sidebar when used on mobile)
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navigateTo(link.dataset.page);
+    closeSidebar();
+  });
+});
+
+// mobile links already handled separately below
+mobileNavLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navigateTo(link.dataset.page);
+    closeSidebar();
+  });
+});
+
+// modify navigation helper to sync active state on both sets of links
 function navigateTo(pageId) {
   pages.forEach(p => {
     p.classList.remove('active');
   });
-  navLinks.forEach(l => l.classList.remove('active'));
 
   const targetPage = document.getElementById('page-' + pageId);
-  const targetLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
-
   if (targetPage) targetPage.classList.add('active');
-  if (targetLink) targetLink.classList.add('active');
+
+  // update both desktop and mobile links
+  navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
+  mobileNavLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
 
   localStorage.setItem('activePage', pageId);
 }
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => navigateTo(link.dataset.page));
-});
 
 // Restore last page
 const savedPage = localStorage.getItem('activePage') || 'idea-board';

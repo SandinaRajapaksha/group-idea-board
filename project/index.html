@@ -24,6 +24,9 @@
           <span class="brand-name">StudyBoard</span>
         </div>
 
+        <!-- mobile menu toggle shown on small screens -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+
         <div class="nav-links">
           <button class="nav-link active" data-page="idea-board">Idea Board</button>
           <button class="nav-link" data-page="gpa">GPA Calculator</button>
@@ -78,8 +81,12 @@
 
     <!-- ═══════════════════════ LAYOUT ═══════════════════════ -->
     <div class="layout">
-      <!-- ───────── SIDEBAR ───────── -->
-      <aside class="sidebar">
+      <aside id="sidebar" class="sidebar">
+        <div class="mobile-nav-links">
+          <button class="nav-link" data-page="idea-board">Idea Board</button>
+          <button class="nav-link" data-page="gpa">GPA Calculator</button>
+          <button class="nav-link" data-page="timer">Study Timer</button>
+        </div>
         <div class="sidebar-header">
           <h3>Upcoming Events</h3>
         </div>
@@ -142,6 +149,7 @@
           </li>
         </ul>
       </aside>
+      <div id="menuOverlay" class="menu-overlay hidden"></div>
 
       <!-- ───────── MAIN CONTENT ───────── -->
       <main class="main-content">
