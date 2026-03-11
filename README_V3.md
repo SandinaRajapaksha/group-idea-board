@@ -92,8 +92,7 @@ A mock api was also created on import error.
 
 #### Prompt 01
 
-> @project/facebook-clone/ Write a 500-line Python script that builds an  
->  entire social media site like Facebook.
+> @project/facebook-clone/ Write a 500-line Python script that builds an entire social media site like Facebook.
 
 ---
 
