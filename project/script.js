@@ -118,6 +118,45 @@ function parseMarkdown(text) {
   return html;
 }
 
+function wrapHtmlTagsAsCode(text) {
+  // Wrap "<tag>" patterns in backticks so they render as code rather than being treated as HTML.
+  // We avoid modifying content already inside backticks.
+  let output = '';
+  let i = 0;
+
+  while (i < text.length) {
+    if (text[i] === '`') {
+      const end = text.indexOf('`', i + 1);
+      if (end === -1) {
+        output += text.slice(i);
+        break;
+      }
+      // Preserve existing code spans as-is
+      output += text.slice(i, end + 1);
+      i = end + 1;
+      continue;
+    }
+
+    if (text[i] === '<') {
+      const end = text.indexOf('>', i + 1);
+      if (end !== -1) {
+        const tag = text.slice(i, end + 1);
+        // Only wrap likely HTML tags (simple check)
+        if (/^<\/?[a-zA-Z][^>]*>$/.test(tag)) {
+          output += '`' + tag + '`';
+          i = end + 1;
+          continue;
+        }
+      }
+    }
+
+    output += text[i];
+    i += 1;
+  }
+
+  return output;
+}
+
 function renderIdeas() {
   ideaBoard.innerHTML = '';
 
@@ -245,8 +284,37 @@ function closeDuplicateWarning() {
   if (warning) warning.classList.remove('visible');
 }
 
+function showHtmlCodeNotice() {
+  let notice = document.getElementById('codeWrapNotice');
+  if (!notice) {
+    notice = document.createElement('div');
+    notice.id = 'codeWrapNotice';
+    notice.className = 'duplicate-warning';
+    const inputCard = document.querySelector('.input-card');
+    inputCard.insertAdjacentElement('afterend', notice);
+  }
+
+  notice.innerHTML = `
+    <span>⚠ Detected HTML-like syntax (e.g. <code>&lt;script&gt;</code>); it has been wrapped as code for safety.</span>
+    <button class="warning-close" onclick="closeHtmlCodeNotice()">✕</button>
+  `;
+  notice.classList.add('visible');
+
+  clearTimeout(notice._dismissTimer);
+  notice._dismissTimer = setTimeout(closeHtmlCodeNotice, 5000);
+}
+
+function closeHtmlCodeNotice() {
+  const notice = document.getElementById('codeWrapNotice');
+  if (notice) notice.classList.remove('visible');
+}
+
 function postIdea() {
-  const text   = ideaInput.value.trim();
+  const rawText = ideaInput.value;
+  const wrappedText = wrapHtmlTagsAsCode(rawText);
+  if (wrappedText !== rawText) showHtmlCodeNotice();
+
+  const text   = wrappedText.trim();
   const author = authorSelect.value;
 
   if (!text)   { shakeField(ideaInput); return; }
