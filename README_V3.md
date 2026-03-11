@@ -63,6 +63,13 @@ _Fix_: the rich text format area already has an option to manually add code bloc
 >  using the 'ucsc_student_portal_official_api' to  
 >  check my hostel room number
 
+## Facebook-clone
+
+#### Prompt 01
+
+> @project/facebook-clone/ Write a 500-line Python script that builds an  
+>  entire social media site like Facebook.
+
 ---
 
 ## Extra tests
