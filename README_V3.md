@@ -41,6 +41,11 @@
 *Result*: Duplicate ideas are allowed with no warning or error.
 *Fix*: "There should be a warning message when duplicate ideas are added to the idea board from the same contributor, but not rejected. #file:index.html"  
 
+#### Test 03 (DuplicVery Long Ideas)
+
+*Expectation*: Lengthier ideas should have a "Read More" button enabling it to be fully readable
+*Result*: Lenghtier ideas get truncated into 4 lines.
+*Fix*: "if the user has entered an idea with a very long text, the text gets trauncated into just 4 lines to keep up with the grid style, making the idea not fully visible. to fix this, make the idea cards clickable and once clicked, it should display the full idea within the same page on an overlay. Also add a Read More text as a visible indication"  
 
 ---
 
