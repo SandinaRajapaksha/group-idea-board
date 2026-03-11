@@ -37,7 +37,7 @@ A hands-on group project from the **University of Colombo School of Computing (U
 
 #### Prompt 02
 
-> The names of the team members are Sandina, Ravindu, Nesith, Dinithi, Nethmi, Thulana, Niduka, Chaneru and Ivishan.
+> The names of the team members are Sandina, Ravindu, Nesith, Dinithi, Nethmi, Thulana, Niduka, Chaniru and Ivishan.
 > Use a white and dark blue as the theme. Enable dark mode support.
 > Modern styling, minimal and suitable for academic settings.
 
