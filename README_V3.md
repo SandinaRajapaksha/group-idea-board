@@ -53,6 +53,11 @@
 *Result*: Code-like input is treated as normal text
 *Fix*: the rich text format area already has an option to manually add code block but if the user forgets to click it and kept typing code as usual, it would not displayed as a codeblock once submitted. check the user input before submitting fir potential code writing and either prompt the user or automatically wrap only the code part within with code
 
+#### Test 08 (Responsivity)
+*Expectation*: Respsoncive UI that adapts to a range of screen sizes, with different layouts for different size limits.
+*Result*: The sidebar and the the header is not responsive and the content goes out of bounds on smaller screens. 
+*Fix*: The header should be responsive and mobile friendly. Add a expandable hamburger menu for mobile screens. The sidebar is not visible on smaller screens. Add a seperate button for the sidebar that toggles it's visibility.
+
 ---
 
 ## The Fake API
@@ -63,6 +68,5 @@
 
 ## Extra tests
 
-#### Test 01
 
 ---
