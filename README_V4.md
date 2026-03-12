@@ -15,12 +15,12 @@ rim, net, and backboard. Ensure the trajectory and physics feel realistic, the m
 smooth, and the animation loops continuously with the ball properly entering the basket
 each time.
 
-|         | UI  | Functionality | Bugs |
-| ------- | --- | ------------- | ---- |
-| Gemini  |     |               |      |
-| ChatGPT |     |               |      |
-| Claude  |     |               |      |
-| Grok    |     |               |      |
+|         | UI                                                                    | Functionality                                                       | Bugs                            |
+| ------- | --------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------- |
+| Gemini  |                                                                       |                                                                     |                                 |
+| ChatGPT |                                                                       |                                                                     |                                 |
+| Claude  |                                                                       |                                                                     |                                 |
+| Grok    | Nice cartoonish illustrations. Basket ball net is connected to a poll | Basket balls travels like projectile from bottom-left to top right. | minor text glitch in both sides |
 
 #### prompt 2 :
 
