@@ -48,4 +48,5 @@ each time.
 | Gemini  |     |               |      |
 | ChatGPT |     |               |      |
 | Claude  |     |               |      |
-| Grok    |     |               |      |
+| Grok    |     |                |      |
+
