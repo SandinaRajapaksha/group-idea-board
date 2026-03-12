@@ -40,11 +40,17 @@ each time.
 | Claude  |     |               |      |
 | Grok    |     |               |      |
 
-#### prompt 4 :
+#### prompt 4 : 
+
+
+Side view HTML/CSS/JS animation of a six-shot revolver firing all rounds
+until empty: realistic cylinder rotation, hammer cock & release, crisp muzzle flash + brief
+smoke, ejected brass casings that tumble out, subtle recoil and slide/backwards bob,
+visible spent chambers, play 6 shots in sequence then stop.
 
 |         | UI  | Functionality | Bugs |
 | ------- | --- | ------------- | ---- |
 | Gemini  |     |               |      |
 | ChatGPT |     |               |      |
 | Claude  |     |               |      |
-| Grok    |     |               |      |
+| Grok    |The UI displays a simple animation of a revolver firing six times in sequence. The design appears basic and looks more like a primary or rough animation rather than a realistic gun model. Although the interface supports a mobile view, it is not very user-friendly. The revolver is not fully visible on the screen, which makes the animation less clear to the user.     |  The animation functions correctly and follows the intended firing sequence. The revolver fires six times in order, and the sequence works properly for all six shots. During each shot, a visible smoke effect appears. Overall, the basic functionality of the animation works as expected.            | In the interface is that the animation does not restart after the six shots are completed. The system should refresh or provide a restart option for the next round, but there is no button or control available to do this.     |
