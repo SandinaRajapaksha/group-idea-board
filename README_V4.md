@@ -50,3 +50,12 @@ Create a single-file HTML/CSS/JS animation of a metal wrench tightening a hex nu
 | ChatGPT |     |               |      |
 | Claude  |     |               |      |
 | Grok    |     |               |      |
+
+#### Part 2
+
+#### prompt 
+write a short story about a celebrity meeting a fan
+
+Yes the AI took a girl called Maya as the fan and a guy called Julian Vane as the celebrity eventhough we didn't instruct it to.
+
+AI can take its own assumptions which could lead to inaccurate outputs. It decides things by itself when the correct prompts are not given. So, it is necessary to use it just as a tool and master the skill of writing prompts inorder to use it in a productive way.
