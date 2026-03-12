@@ -18,8 +18,8 @@ each time.
 |         | UI  | Functionality | Bugs |
 | ------- | --- | ------------- | ---- |
 | Gemini  |     |               |      |
-| ChatGPT |     |               |      |
-| Claude  |     |               |      |
+| ChatGPT |  The animation shows a clean light‑themed court with a customizable basketball whose color can be adjusted for visual variety   |     The ball follows a smooth parabolic trajectory into the hoop, with adjustable speed and launch angle to control how fast and high the arc looks          |  The ball’s path is fixed, it doesn’t spin, the rim and net don’t react, the reset is sudden, and resizing the window can break the layout.    |
+| Claude  |  The animation shows a clean, light‑themed basketball hoop, backboard, and net with a simple orange ball.   | The ball follows a smooth parabolic arc, rises to a peak, and drops directly into the hoop in a continuous loop.              |  The ball does not spin, the net remains static, and the shot trajectory is fixed without variation    |
 | Grok    |     |               |      |
 
 #### prompt 2 :
@@ -27,8 +27,8 @@ each time.
 |         | UI  | Functionality | Bugs |
 | ------- | --- | ------------- | ---- |
 | Gemini  |     |               |      |
-| ChatGPT |     |               |      |
-| Claude  |     |               |      |
+| ChatGPT |  The animation shows a simple SVG cross‑section with a cylinder, piston, connecting rod, and crankshaft, plus color‑coded effects for each stroke.   |    The crankshaft rotates smoothly, driving the piston up and down with realistic linkage geometry, while the stroke phases change color to represent intake, compression, power, and exhaust.           |   The piston motion is simplified, the stroke colors are basic overlays without fluid detail, resizing may distort the layout, and the cycle resets abruptly without extra mechanical realism.   |
+| Claude  | The engine animation shows a cross‑section of a cylinder with piston, connecting rod, and crankshaft, along with colored effects for each stroke.    |      The crankshaft rotates smoothly, driving the piston’s up‑down motion through realistic linkage geometry, while the cycle transitions through intake (blue), compression, power (orange/yellow), and exhaust (grey).         |   The stroke colors are simple overlays without detailed airflow or combustion visuals, the piston and rod shapes are basic, and the exhaust/intake effects remain static rather than animated dynamically.   |
 | Grok    |     |               |      |
 
 #### prompt 3 :
