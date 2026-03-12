@@ -33,11 +33,12 @@ each time.
 | Grok    |     |               |      |
 
 #### prompt 3 :
+Create a single-file HTML/CSS/JS animation of a metal wrench tightening a hex nut on a threaded bolt.
 
 |         | UI  | Functionality | Bugs |
 | ------- | --- | ------------- | ---- |
-| Gemini  |     |               |      |
-| ChatGPT |     |               |      |
+| Gemini  |Has a sleek UI themed in dark blue. Has applied styles to the nut and wrench to make it look like metal. Has implemented working buttons to "start tightenning" and "Reset nut". Has added a footer with text "Mechanical Precision v1.0"|The initial placement of the nut and wrench is fine. When clicked on the "Start tightenning" button, it is expected to trigger the tightening animation. And reset the animation if clicked on the reset button|Upon clicking the start button, both the wrench and nut move out of the browser window. The nut can be seen, partially, rotating but not along the bolt thread. Reset button do work as intended though.|
+| ChatGPT |Has a minimal UI design themed in grey color. No buttons have been added. The animation plays in the center upon loading the webpage |Expected to just smoothly play the animation when loaded and keep it playing indefinetely.|The placement and alignment of the objects are slightly off. The objects look plain and 2D|
 | Claude  |     |               |      |
 | Grok    |     |               |      |
 
