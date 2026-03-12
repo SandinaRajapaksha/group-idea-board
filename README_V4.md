@@ -31,6 +31,16 @@ each time.
 | Claude  |     |               |      |
 | Grok    |     |               |      |
 
+<<<<<<< HEAD
+#### Part 2
+
+#### prompt 
+write a short story about a celebrity meeting a fan
+
+Yes the AI took a girl called Maya as the fan and a guy called Julian Vane as the celebrity eventhough we didn't instruct it to.
+
+AI can take its own assumptions which could lead to inaccurate outputs. It decides things by itself when the correct prompts are not given. So, it is necessary to use it just as a tool and master the skill of writing prompts inorder to use it in a productive way.
+=======
 #### prompt 3 :
 
 |         | UI  | Functionality | Bugs |
@@ -54,3 +64,4 @@ visible spent chambers, play 6 shots in sequence then stop.
 | ChatGPT |The UI consists of a centered dark canvas displaying a side-view revolver. The revolver’s main parts barrel, cylinder, handle, and hammer are visually represented, and visual effects such as muzzle flash, smoke, and falling brass casings appear during firing to make the animation look realistic.|When we start firing, the hammer moves up and releases, the cylinder rotates to the next chamber, a muzzle flash and smoke appear, and a casing is ejected. Each fired chamber changes color to show it is spent. This process repeats automatically for six shots and then stops when all chambers are empty.|The spent chamber marking does not rotate with the cylinder correctly.Because of this, the dark spent chamber may appear in the wrong position visually, making it look like a different chamber was fired.  |
 | Claude  |This interactive six-shot revolver animation provides a realistic and engaging user experience, showcasing the intricate details of firearm operation.|The animation simulates a revolver firing with the cylinder rotating 60° per shot and the hammer snapping forward. Each shot shows a muzzle flash, smoke, brass ejection, and recoil, while the chambers darken as they are spent. The sequence stops automatically after six shots.|      |
 | Grok    |The UI displays a simple animation of a revolver firing six times in sequence. The design appears basic and looks more like a primary or rough animation rather than a realistic gun model. Although the interface supports a mobile view, it is not very user-friendly. The revolver is not fully visible on the screen, which makes the animation less clear to the user.     |  The animation functions correctly and follows the intended firing sequence. The revolver fires six times in order, and the sequence works properly for all six shots. During each shot, a visible smoke effect appears. Overall, the basic functionality of the animation works as expected.            | In the interface is that the animation does not restart after the six shots are completed. The system should refresh or provide a restart option for the next round, but there is no button or control available to do this.     |
+>>>>>>> 193f7a568f97f92fa66fef69b9dfdf0ae8161a62
