@@ -48,5 +48,5 @@ Create a single-file HTML/CSS/JS animation of a metal wrench tightening a hex nu
 | ------- | --- | ------------- | ---- |
 | Gemini  |     |               |      |
 | ChatGPT |     |               |      |
-| Claude  |     |               |      |
+| Claude  |This interactive six-shot revolver animation provides a realistic and engaging user experience, showcasing the intricate details of firearm operation.|The animation simulates a revolver firing with the cylinder rotating 60° per shot and the hammer snapping forward. Each shot shows a muzzle flash, smoke, brass ejection, and recoil, while the chambers darken as they are spent. The sequence stops automatically after six shots.|      |
 | Grok    |     |               |      |
