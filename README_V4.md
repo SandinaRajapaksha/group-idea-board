@@ -27,7 +27,7 @@ each time.
 
 |         | UI  | Functionality | Bugs |
 | ------- | --- | ------------- | ---- |
-| Gemini  |     |               |      |
+| Gemini  |    a minimalist, dark themed engine block with a gray piston. It includes a live status indicator above the frame that color codes the current engine stroke blue for intake, orange for power, and gray for exhaust to visually represent the mechanical cycle. |   The piston moves up and down vertically.            |   There is no crankshaft. The piston just moves vertically within the chamber   |
 | ChatGPT |  The animation shows a simple SVG cross‑section with a cylinder, piston, connecting rod, and crankshaft, plus color‑coded effects for each stroke.   |    The crankshaft rotates smoothly, driving the piston up and down with realistic linkage geometry, while the stroke phases change color to represent intake, compression, power, and exhaust.           |   The piston motion is simplified, the stroke colors are basic overlays without fluid detail, resizing may distort the layout, and the cycle resets abruptly without extra mechanical realism.   |
 | Claude  | The engine animation shows a cross‑section of a cylinder with piston, connecting rod, and crankshaft, along with colored effects for each stroke.    |      The crankshaft rotates smoothly, driving the piston’s up‑down motion through realistic linkage geometry, while the cycle transitions through intake (blue), compression, power (orange/yellow), and exhaust (grey).         |   The stroke colors are simple overlays without detailed airflow or combustion visuals, the piston and rod shapes are basic, and the exhaust/intake effects remain static rather than animated dynamically.   |
 | Grok    |     |               |      |
