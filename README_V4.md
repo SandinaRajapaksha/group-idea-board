@@ -17,7 +17,7 @@ each time.
 
 |         | UI                                                                    | Functionality                                                       | Bugs                            |
 | ------- | --------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------- |
-| Gemini  |                                                                       |                                                                     |                                 |
+| Gemini  |   light-gray "court" with a minimalist white backboard and a red rim. The basketball is orange and the frame of the basket is red.                                                               |  The ball follows a calculated gravity curve, while the net "wiggles" at the exact moment the ball passes through, creating a continuous, physics-like loop.                                                                   |             The ball dissappears after going throgh the hoop.                    |
 | ChatGPT |                                                                       |                                                                     |                                 |
 | Claude  |                                                                       |                                                                     |                                 |
 | Grok    | Nice cartoonish illustrations. Basket ball net is connected to a poll | Basket balls travels like projectile from bottom-left to top right. | minor text glitch in both sides |
